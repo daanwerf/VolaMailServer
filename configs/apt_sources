@@ -13,3 +13,6 @@ deb-src http://security.debian.org/ jessie/updates main
 # jessie-updates, previously known as 'volatile'
 deb http://ftp.nl.debian.org/debian/ jessie-updates main
 deb-src http://ftp.nl.debian.org/debian/ jessie-updates main
+
+# jessie-backports, necessary for certbot
+deb http://ftp.debian.org/debian jessie-backports main
