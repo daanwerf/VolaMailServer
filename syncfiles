@@ -1,0 +1,117 @@
+#!/bin/bash
+# Script to safely synchronize files from this repo across the server
+
+# initialize constants
+readfile="fileproperties"
+if [ $# -eq 0 ]; then
+   force=false
+elif [ $# -eq 1 ]; then
+   if [ "$1" == "--force" ]; then
+      echo "Executing with force!"
+      force=true
+   else
+      echo "Unknown option $1"
+      echo "Usage: syncfiles <options>"
+      exit 1
+   fi
+else
+   echo "Usage: syncfiles <options>"
+   exit 1
+fi
+
+# make sure the current directory is the location of the script
+cd "$(dirname "$0")"
+
+# create temporary clone of this repo on the previous commit and suppress output
+mkdir clone
+git clone -q . "clone/"
+git -C "clone/" checkout -q HEAD~
+
+# read all lines of the file readfile
+line_no=0
+while read line
+do
+   let "line_no+=1"
+   # check for empty line
+   if [[ -z "$line" ]]; then
+      continue
+   fi
+   firstchar=${line:0:1}
+   # skip comments
+   if [ $firstchar == "#" ]; then
+      # go to the next line
+      continue
+   fi
+   # split the line on whitespaces
+   read -ra array <<< "$line"
+   # this should have four elements: repolocation, systemlocationi, owners and permissions
+   if [ ${#array[@]} -ne 4 ]; then
+      echo "Invalid line: ${#array[@]} elements, 4 expected"
+      echo "Skipping line $line_no"
+      continue
+   fi
+
+   # now do the actual work
+   repofile=${array[0]}
+   systemfile=${array[1]}
+   owners=${array[2]}
+   permissions=${array[3]}
+   # sanity check: systemfile should not be a folder. if it is, place name of repofile after
+   if [ -d "$systemfile" ]; then
+      echo "Warning: $repofile setup to sync to $systemfile, which is a folder!"
+      # We make systemfile a file with the same name as repofile, in the specifiedfolder
+      # We use dirname and basename of systemfile to delete any trailing slash
+      systemfile="$(dirname $systemfile)""/""$(basename $systemfile)""/""$(basename $repofile)"
+      echo "Please fix fileproperties! Continuing with systemfile=$systemfile"
+   fi
+   # first check if systemfile is equal to previous or current commit, when it exists and we're not forcing
+   if [ "$force" != "true" -a -f "$systemfile" ]; then
+      cmp --silent "clone/$repofile" "$systemfile"
+      if [ $? -ne 0 ]; then
+         # previous commit and current state differ: has syncfiles already been ran?
+         cmp --silent "$repofile" "$systemfile"
+         if [ $? -ne 0 ]; then
+            echo "System file has been changed! Please commit the changes to this repository instead, or rerun with --force"
+            echo "Skipping line $line_no"
+            continue
+         fi
+      fi
+   fi
+   # Copy the repofile if the systemfile doesn't exist
+   acted=false
+   if [ ! -f "$systemfile" ]; then
+      cp "$repofile" "$systemfile"
+      acted=true
+   else
+      # only replace if file needs updating
+      cmp --silent "$repofile" "$systemfile"
+      if [ $? -ne 0 ]; then
+         rm "$systemfile"
+         cp "$repofile" "$systemfile"
+         acted=true
+      fi
+   fi
+   # The systemfile is now updated, fix the owners and permissions
+   curowners=$(stat -c "%U:%G" "$systemfile")
+   curperms=$(stat -c "%a" "$systemfile")
+   if [ "$curowners" != "$owners" ]; then
+      chown "$owners" "$systemfile"
+      acted=true
+   fi
+   if [ "$curperms" != "$permissions" ]; then
+      chmod "$permissions" "$systemfile"
+      acted=true
+   fi
+   if [ "$acted" == "true" ]; then
+      echo "Synced $repofile to $systemfile."
+   fi
+done < "$readfile"
+echo "Sync complete!"
+
+# edit permissions so we are not asked for confirmation
+chmod -R ug+w clone/
+# then remove clone
+rm -R clone/
+
+# finally, return to the start directory
+cd - >/dev/null

@@ -1,0 +1,5 @@
+# List of all fileproperties used by the syncfiles script
+# format:
+# repo_location(relative) system_location(absolute) owner:group permissions(octal)
+
+configs/apt_sources         /etc/apt/sources.list        root:root 644
