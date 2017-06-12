@@ -2,4 +2,9 @@
 # format:
 # repo_location(relative) system_location(absolute) owner:group permissions(octal)
 
-configs/apt_sources         /etc/apt/sources.list        root:root 644
+# Extended sources list for apt-get
+configs/apt_sources         /etc/apt/sources.list                                  root:root 644
+
+# Apache config files
+configs/apache/http_vhost   /etc/apache2/sites-available/000-default.conf          root:root 644
+configs/apache/https_vhost  /etc/apache2/sites-available/000-default-le-ssl.conf   root:root 644
