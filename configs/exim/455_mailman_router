@@ -1,3 +1,4 @@
+# Default exim4 config for mailman, as found on https://mailman.readthedocs.io/en/latest/src/mailman/docs/mta.html
 mailman3_router:
   driver = accept
   domains = +mm_domains

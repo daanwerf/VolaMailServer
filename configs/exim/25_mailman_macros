@@ -1,3 +1,5 @@
+# Default exim4 config for mailman, as found on https://mailman.readthedocs.io/en/latest/src/mailman/docs/mta.html
+# Edited to our domain and installation path
 # The colon-separated list of domains served by Mailman.
 domainlist mm_domains=volantica.nl
 
