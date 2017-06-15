@@ -8,3 +8,6 @@ configs/apt_sources         /etc/apt/sources.list                               
 # Apache config files
 configs/apache/http_vhost   /etc/apache2/sites-available/000-default.conf          root:root 644
 configs/apache/https_vhost  /etc/apache2/sites-available/000-default-le-ssl.conf   root:root 644
+
+# Mailman config
+configs/mailman.cfg         /var/lib/mailman/var/etc/mailman.cfg                   root:root 660
