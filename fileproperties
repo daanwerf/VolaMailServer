@@ -10,7 +10,7 @@ configs/apache/http_vhost         /etc/apache2/sites-available/000-default.conf 
 configs/apache/https_vhost        /etc/apache2/sites-available/000-default-le-ssl.conf   root:root 644
 
 # Mailman config
-configs/mailman.cfg               /var/lib/mailman/var/etc/mailman.cfg                   root:root 660
+configs/mailman.cfg               /var/lib/mailman/var/etc/mailman.cfg                   list:list 660
 
 # Exim4 config
 configs/exim/25_mailman_macros    /etc/exim4/conf.d/main/25_mm3_macros                   root:root 644
