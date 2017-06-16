@@ -2,4 +2,4 @@
 DKIM_CANON = relaxed
 DKIM_SELECTOR = 20170616
 DKIM_DOMAIN = volantica.nl
-DKIM_FILE = /etc/exim4/dkim/dkim-volantica.nl-private.pem
+DKIM_PRIVATE_KEY = /etc/exim4/dkim/dkim-volantica.nl-private.pem
