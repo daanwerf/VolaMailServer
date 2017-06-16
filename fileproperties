@@ -3,19 +3,19 @@
 # repo_location(relative) system_location(absolute) owner:group permissions(octal)
 
 # Extended sources list for apt-get
-configs/apt_sources                    /etc/apt/sources.list                                        root:root 644
+configs/apt_sources                    /etc/apt/sources.list                                             root:root 644
 
 # Apache config files
-configs/apache/http_vhost              /etc/apache2/sites-available/000-default.conf                root:root 644
-configs/apache/https_vhost             /etc/apache2/sites-available/000-default-le-ssl.conf         root:root 644
+configs/apache/http_vhost              /etc/apache2/sites-available/000-default.conf                     root:root 644
+configs/apache/https_vhost             /etc/apache2/sites-available/000-default-le-ssl.conf              root:root 644
 
 # Mailman config
-configs/mailman.cfg                    /var/lib/mailman/var/etc/mailman.cfg                         list:list 660
+configs/mailman.cfg                    /var/lib/mailman/var/etc/mailman.cfg                              list:list 660
 
 # Exim4 config
-configs/exim/25_mailman_macros         /etc/exim4/conf.d/main/25_mm3_macros                         root:root 644
-configs/exim/455_mailman_router        /etc/exim4/conf.d/router/455_mm3_router                      root:root 644
-configs/exim/55_mailman_transport      /etc/exim4/conf.d/transport/55_mm3_transport                 root:root 644
-configs/exim/exim_mainconfig           /etc/exim4/update-exim4.conf.conf                            root:root 644
-configs/exim/00_dkim_macros            /etc/exim4/conf.d/main/00_dkim_macros                        root:root 644
-configs/exim/30_remote_smtp_smarthost  /etc/exim4/conf.d/main/30_exim4-config_remote_smtp_smarthost root:root 644
+configs/exim/25_mailman_macros         /etc/exim4/conf.d/main/25_mm3_macros                              root:root 644
+configs/exim/455_mailman_router        /etc/exim4/conf.d/router/455_mm3_router                           root:root 644
+configs/exim/55_mailman_transport      /etc/exim4/conf.d/transport/55_mm3_transport                      root:root 644
+configs/exim/exim_mainconfig           /etc/exim4/update-exim4.conf.conf                                 root:root 644
+configs/exim/00_dkim_macros            /etc/exim4/conf.d/main/00_dkim_macros                             root:root 644
+configs/exim/30_remote_smtp_smarthost  /etc/exim4/conf.d/transport/30_exim4-config_remote_smtp_smarthost root:root 644
