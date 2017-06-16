@@ -17,3 +17,4 @@ configs/exim/25_mailman_macros    /etc/exim4/conf.d/main/25_mm3_macros          
 configs/exim/455_mailman_router   /etc/exim4/conf.d/router/455_mm3_router                root:root 644
 configs/exim/55_mailman_transport /etc/exim4/conf.d/transport/55_mm3_transport           root:root 644
 configs/exim/exim_mainconfig      /etc/exim4/update-exim4.conf.conf                      root:root 644
+configs/exim/00_dkim_macros       /etc/exim4/conf.d/main/00_dkim_macros                  root:root 644

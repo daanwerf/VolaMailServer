@@ -1,0 +1,5 @@
+# Enables authentication of sender with DKIM
+DKIM_CANON = relaxed
+DKIM_SELECTOR = 20160616
+DKIM_DOMAIN = volantica.nl
+DKIM_FILE = /etc/exim4/dkim/dkim-volantica.nl-private.pem
