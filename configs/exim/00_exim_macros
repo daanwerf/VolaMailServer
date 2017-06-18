@@ -3,3 +3,8 @@ DKIM_CANON = relaxed
 DKIM_SELECTOR = 20170616
 DKIM_DOMAIN = volantica.nl
 DKIM_PRIVATE_KEY = /etc/exim4/dkim/dkim-volantica.nl-private.pem
+
+# Enables TLS support for exim as server
+MAIN_TLS_ENABLE = yes
+MAIN_TLS_CERTIFICATE = /etc/letsencrypt/live/volantica.nl-0001/fullchain.pem
+MAIN_TLS_PRIVATEKEY = /etc/letsencrypt/live/volantica.nl-0001/privkey.pem
