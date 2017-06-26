@@ -3,3 +3,4 @@ static
 venv
 settings_local.py
 logs/*.log
+*.pyc

@@ -189,9 +189,9 @@ LOGOUT_URL = 'account_logout'
 
 
 # From Address for emails sent to users
-DEFAULT_FROM_EMAIL = 'postorius@localhost.local'
+DEFAULT_FROM_EMAIL = 'admins@volantica.nl'
 # From Address for emails sent to admins
-SERVER_EMAIL = 'root@localhost.local'
+SERVER_EMAIL = 'root@volantica.nl'
 # Compatibility with Bootstrap 3
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
