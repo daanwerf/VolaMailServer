@@ -10,7 +10,6 @@
 	ServerName volantica.nl
 
 	ServerAdmin webmaster@localhost
-	DocumentRoot /var/www/html
 
 	# Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
 	# error, crit, alert, emerg.
@@ -40,6 +39,10 @@ WSGIScriptAlias / /home/vola-admins/postorius/example_project/wsgi.py
 <Directory "/home/vola-admins/postorius/example_project/">
     Require all granted
 </Directory>
+
+WSGIDaemonProcess postorius python-path=/home/vola-admins/postorius python-home=/home/vola-admins/postorius/example_project
+WSGIProcessGroup postorius
+WSGIScriptAlias / /home/vola-admins/postorius/example_project/wsgi.py
 
 </VirtualHost>
 
