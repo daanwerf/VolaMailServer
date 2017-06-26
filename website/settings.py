@@ -47,7 +47,7 @@ ADMINS = (
 
 SITE_ID = 1
 
-ALLOWED_HOSTS = [u'volantica.nl']
+ALLOWED_HOSTS = [u'volantica.nl', u'www.volantica.nl']
 
 # Mailman API credentials
 MAILMAN_REST_API_URL = 'http://localhost:8001'
