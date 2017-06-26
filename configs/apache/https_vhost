@@ -30,19 +30,18 @@ SSLCertificateFile /etc/letsencrypt/live/volantica.nl-0001/fullchain.pem
 SSLCertificateKeyFile /etc/letsencrypt/live/volantica.nl-0001/privkey.pem
 Include /etc/letsencrypt/options-ssl-apache.conf
 
-Alias /static /home/vola-admins/postorius/example_project/static
-<Directory "/home/vola-admins/postorius/example_project/static">
+Alias /static /home/vola-admins/VolaMailServer/website/static
+<Directory "/home/vola-admins/VolaMailServer/website/static">
     Require all granted
 </Directory>
 
-WSGIScriptAlias / /home/vola-admins/postorius/example_project/wsgi.py
-<Directory "/home/vola-admins/postorius/example_project/">
+WSGIScriptAlias / /home/vola-admins/VolaMailServer/website/wsgi.py
+<Directory "/home/vola-admins/VolaMailServer/website/">
     Require all granted
 </Directory>
 
-WSGIDaemonProcess postorius python-path=/home/vola-admins/postorius/example_project python-home=/home/vola-admins/postorius/example_project
+WSGIDaemonProcess postorius python-path=/home/vola-admins/VolaMailServer/website python-home=/home/vola-admins/VolaMailServer/website/static
 WSGIProcessGroup postorius
-WSGIScriptAlias / /home/vola-admins/postorius/example_project/wsgi.py
 
 </VirtualHost>
 
