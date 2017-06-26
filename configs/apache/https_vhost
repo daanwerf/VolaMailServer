@@ -30,8 +30,8 @@ SSLCertificateFile /etc/letsencrypt/live/volantica.nl-0001/fullchain.pem
 SSLCertificateKeyFile /etc/letsencrypt/live/volantica.nl-0001/privkey.pem
 Include /etc/letsencrypt/options-ssl-apache.conf
 
-Alias /static /home/vola-admins/postorius/src/postorius/static
-<Directory "/home/vola-admins/postorius/src/postorius/static">
+Alias /static /home/vola-admins/postorius/example_project/static
+<Directory "/home/vola-admins/postorius/example_project/static">
     Require all granted
 </Directory>
 
