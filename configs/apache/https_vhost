@@ -40,7 +40,7 @@ WSGIScriptAlias / /home/vola-admins/postorius/example_project/wsgi.py
     Require all granted
 </Directory>
 
-WSGIDaemonProcess postorius python-path=/home/vola-admins/postorius python-home=/home/vola-admins/postorius/example_project
+WSGIDaemonProcess postorius python-path=/home/vola-admins/postorius/example_project python-home=/home/vola-admins/postorius/example_project
 WSGIProcessGroup postorius
 WSGIScriptAlias / /home/vola-admins/postorius/example_project/wsgi.py
 
